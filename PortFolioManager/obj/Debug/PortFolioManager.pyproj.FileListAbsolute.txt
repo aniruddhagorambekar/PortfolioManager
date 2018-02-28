@@ -1,0 +1,3 @@
+D:\Fun_project\PortfolioManager\PortFolioManager\PortFolioManager\obj\Debug\PortFolioManager.pyproj.CoreCompileInputs.cache
+D:\Fun_project\PortfolioManager\PortFolioManager\PortFolioManager\bin\Microsoft.PythonTools.WebRole.dll
+D:\Fun_project\PortfolioManager\PortFolioManager\PortFolioManager\bin\wfastcgi.py
