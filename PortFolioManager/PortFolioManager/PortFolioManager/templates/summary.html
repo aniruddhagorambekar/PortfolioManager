@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h1>Summary of Investments</h1>
+  <p class="lead">Summary of all the investment instruments</p>
+  <p><a href="{{ url_for('home') }}" class="btn btn-primary btn-large">Home &raquo;</a></p>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <table id="summary_table" class="table table-bordered">
+        <thead>
+          <tr>
+            <th> # </th>
+            <th> Account Number </th>
+            <th> Type </th>
+            <th> Bank </th>
+            <th> Amount </th>
+            <th> ROI </th>
+            <th> Start Date </th>
+            <th> Maturity Date </th>
+            <th> Current Value </th>
+            <th> Maturity Value </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for Entry in Entries %}
+          <tr>
+            <td>{{Entry['Sr_No']}}</td>
+            <td>{{Entry['Account_No']}}</td>
+            <td>{{Entry['Type']}}</td>
+            <td>{{Entry['Bank']}}</td>
+            <td>{{Entry['Principal_Amount']}}</td>
+            <td>{{Entry['ROI']}}</td>
+            <td>{{Entry['Start_Date']}}</td>
+            <td>{{Entry['Maturity_Date']}}</td>
+            <td>{{Entry['Current_Value']}}</td>
+            <td>{{Entry['Maturity_Amount']}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<script src="/static/scripts/autosorttable.js"></script>
+
+
+{% endblock %}
+

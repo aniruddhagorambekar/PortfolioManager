@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tabbable" id="tabs-32062">
+                <ul class="nav nav-tabs">
+                    {% for key, value in settings.iteritems() %}
+                    <li>
+                        <a href="#{{key}}" data-toggle="tab">{{key}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <div class="tab-content">
+                    {% for key, value in settings.iteritems() %}
+                    <div class="tab-pane" id="{{key}}">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <!-- Values are in dictionary. We need to put parse it further to get values -->
+                                    {% if value is mapping %}
+
+                                    {% for key1, value1 in value.iteritems() %}
+                                    {% if value1 is mapping %}
+                                    <p> {{key1}} is a dictionary. it is not handled. Either rearrange dictionary or add a code to handle it</p>
+                                    {% elif value1 is string %}
+                                    <div>
+                                        <span class="label label-default">{{key1}} :</span>
+                                        <input type="text" id="{{key}}.{{key1}}" value="{{value1}}" />
+                                    </div>
+                                    {% endif %}
+
+                                    {% endfor %}
+
+                                    <!-- Values are in string. We need to display a editor -->
+                                    {% elif value is string  %}
+                                    <div>
+                                        <span class="label label-default">{{key}} :</span>
+                                        <input type="text" id="{{key}}" value="{{value}}" />
+                                    </div>
+
+                                    {% else  %}
+                                    <p>Value is boolean</p>
+                                    {% endif  %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+    </div>
+</div>
+    {% endblock %}
